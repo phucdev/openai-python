@@ -354,7 +354,8 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
         custom_query: Mapping[str, object] | None = None,
     ) -> None:
         self._version = version
-        self._base_url = self._enforce_trailing_slash(URL(base_url))
+        # self._base_url = self._enforce_trailing_slash(URL(base_url))
+        self._base_url = URL(base_url)    # keep base_url as is
         self.max_retries = max_retries
         self.timeout = timeout
         self._limits = limits
