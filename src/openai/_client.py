@@ -157,7 +157,7 @@ class OpenAI(SyncAPIClient):
     @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
-        return {"Authorization": f"Bearer {api_key}"}
+        return {"Authorization": f"{api_key}"}    # Removed Bearer from value field
 
     @property
     @override
