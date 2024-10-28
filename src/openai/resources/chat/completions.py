@@ -8,6 +8,7 @@ from typing_extensions import Literal, overload
 
 import httpx
 import pydantic
+import json
 
 from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -816,7 +817,7 @@ class Completions(SyncAPIResource):
             "",    # Removed "/chat/completions" endpoint in order to work with internal endpoint url
             body=maybe_transform(
                 {
-                    "messages": messages,
+                    "messages": json.dumps(messages),
                     "model": model,
                     "audio": audio,
                     "frequency_penalty": frequency_penalty,
@@ -1634,7 +1635,7 @@ class AsyncCompletions(AsyncAPIResource):
             "",    # Removed "/chat/completions" endpoint in order to work with internal endpoint url
             body=await async_maybe_transform(
                 {
-                    "messages": messages,
+                    "messages": json.dumps(messages),
                     "model": model,
                     "audio": audio,
                     "frequency_penalty": frequency_penalty,
