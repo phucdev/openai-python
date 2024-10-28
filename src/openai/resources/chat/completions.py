@@ -813,7 +813,7 @@ class Completions(SyncAPIResource):
     ) -> ChatCompletion | Stream[ChatCompletionChunk]:
         validate_response_format(response_format)
         return self._post(
-            "/chat/completions",
+            "",    # Removed "/chat/completions" endpoint in order to work with internal endpoint url
             body=maybe_transform(
                 {
                     "messages": messages,
@@ -1631,7 +1631,7 @@ class AsyncCompletions(AsyncAPIResource):
     ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:
         validate_response_format(response_format)
         return await self._post(
-            "/chat/completions",
+            "",    # Removed "/chat/completions" endpoint in order to work with internal endpoint url
             body=await async_maybe_transform(
                 {
                     "messages": messages,
